@@ -4,13 +4,11 @@ public class Cat extends Animal{
 
     private static int number;
     private boolean satiety;
-    private Dish dish;
 
-    public Cat(String name, Dish dish){
+    public Cat(String name){
         this.name = name;
         this.satiety = false;
         Cat.number++;
-        this.dish = dish;
     }
 
     public static int getNumber() {
@@ -27,14 +25,6 @@ public class Cat extends Animal{
 
     public void setSatiety(boolean satiety) {
         this.satiety = satiety;
-    }
-
-    public Dish getDish() {
-        return dish;
-    }
-
-    public void setDish(Dish dish) {
-        this.dish = dish;
     }
 
     @Override
@@ -56,17 +46,13 @@ public class Cat extends Animal{
         System.out.println("Всего котов:" + Cat.number);
     }
 
-    public void eat(int food){
-         if (!dish.eat(food)) {
+    public void eat(int food,Dish dish){
+         if (!dish.takeFood(food)) {
              System.out.println("Кот не наелся");
          } else {
              System.out.println("Коту хватило еды");
              satiety = true;
          }
-    }
-
-    public void addFood(int newFood){
-        dish.addFood(newFood);
     }
 
     public void isHungry(){

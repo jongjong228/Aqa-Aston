@@ -26,7 +26,7 @@ public class Dish {
         this.fullness = fullness;
     }
 
-    public boolean eat(int food){
+    public boolean takeFood(int food){
          if ((fullness-food) >= 0)
          {
              fullness-= food;

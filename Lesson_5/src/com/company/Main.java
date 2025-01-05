@@ -12,13 +12,13 @@ public class Main {
     public static void main(String[] args) {
 	//first task
         Dish mainDish = new Dish(100);
-        Cat musa = new Cat("Musia", mainDish);
+        Cat musa = new Cat("Musia");
         musa.run(300);
         musa.run(20);
         musa.swim(60);
-        musa.eat(30);
-        musa.addFood(50);
-        musa.eat(10);
+        musa.eat(30,mainDish);
+        mainDish.addFood(50);
+        musa.eat(10,mainDish);
         Dog shpiz = new Dog("Carla");
         shpiz.run(600);
         shpiz.run(100);
@@ -27,14 +27,14 @@ public class Main {
         Dog curzhar = new Dog("Alma");
         Dog alabai = new Dog("Jack");
         Dog.showNumber();
-        Cat british = new Cat("Mart", mainDish);
+        Cat british = new Cat("Mart");
         Cat.showNumber();
         Cat.showNumberOfAnimals();
-        Cat roza = new Cat("Roza", mainDish);
+        Cat roza = new Cat("Roza");
         Cat[] cats = new Cat[]{musa,british,roza};
         mainDish.addFood(100);
         for (Cat cat : cats) {
-            cat.eat(40);
+            cat.eat(40,mainDish);
             cat.isHungry();
         }
         // second task
