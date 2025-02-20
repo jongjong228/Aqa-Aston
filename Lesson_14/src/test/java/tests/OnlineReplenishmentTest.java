@@ -32,7 +32,7 @@ public class OnlineReplenishmentTest extends BaseTest {
     public void aboutServiceLinkTest() {
         homePage.clickAboutServiceLink();
         AboutServicePage aboutServicePage = new AboutServicePage();
-        homePage.checkAndAgreeCookie();
+        aboutServicePage.checkAndAgreeCookie();
         Assert.assertTrue(aboutServicePage.isPageOpened());
     }
 
