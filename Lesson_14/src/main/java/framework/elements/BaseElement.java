@@ -26,12 +26,16 @@ public class BaseElement {
     public void clickIfExists() {
         try {
             findElement().click();
-        } catch (NoSuchElementException ignored) {
+        } catch (NoSuchElementException | TimeoutException ignored) {
         }
     }
 
     protected WebElement findElement() {
         return waitElementIsDisplayed();
+    }
+
+    public String getAttributeValue(String attribute) {
+        return findElement().getAttribute(attribute);
     }
 
     public WebElement waitElementIsDisplayed() {

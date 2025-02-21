@@ -4,21 +4,20 @@ import framework.singleton.Singleton;
 import framework.utils.WaitUtils;
 import org.openqa.selenium.By;
 
-public class BaseForm {
-
+public class BaseIFrame {
     protected By uniqueElementPath;
 
-    public BaseForm(By locator) {
+    public BaseIFrame(By locator) {
         this.uniqueElementPath = locator;
     }
 
-    public boolean isPageOpened() {
-        waitForPageIsOpened();
+    public boolean isFrameOpened() {
+        waitForFrameIsOpened();
         return (!Singleton.getDriver().findElements(uniqueElementPath).isEmpty());
     }
 
-    protected void waitForPageIsOpened() {
-        WaitUtils.setWaitUntilVisibility(uniqueElementPath);
+    protected void waitForFrameIsOpened() {
+        WaitUtils.setWaitUntilElementIsPresent(uniqueElementPath);
     }
 
 }

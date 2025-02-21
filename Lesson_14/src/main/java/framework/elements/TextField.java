@@ -11,4 +11,8 @@ public class TextField extends BaseElement {
     public void sendKey(String str) {
         findElement().sendKeys(str);
     }
+
+    public void clearField(){
+        findElement().clear();
+    }
 }

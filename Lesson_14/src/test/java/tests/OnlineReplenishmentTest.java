@@ -14,6 +14,7 @@ import utils.KeyUtils;
 public class OnlineReplenishmentTest extends BaseTest {
 
     private HomePage homePage;
+    private PaymentForm paymentForm;
 
     @Test
     public void nameOfBlockTest() {
@@ -39,12 +40,25 @@ public class OnlineReplenishmentTest extends BaseTest {
     @Test(dependsOnMethods = {"aboutServiceLinkTest"})
     public void sendFormTest() {
         DriverUtils.getToPreviousPage();
+        homePage.checkAndAgreeCookie();
         homePage.setEmailField(ConfigUtils.getTestProperty(KeyUtils.EMAIL_KEY));
         homePage.setPhoneField(ConfigUtils.getTestProperty(KeyUtils.PHONE_KEY));
         homePage.setMoneyField(ConfigUtils.getTestProperty(KeyUtils.MONEY_KEY));
         homePage.clickSubmitButton();
-        PaymentForm paymentForm = new PaymentForm();
+        paymentForm = new PaymentForm();
         DriverUtils.switchToFrameByXpath(By.xpath("//iframe[@class='bepaid-iframe']"));
-        Assert.assertTrue(paymentForm.isPageOpened());
+        Assert.assertTrue(paymentForm.isFrameOpened());
     }
+
+   /* @Test(dependsOnMethods = {"sendFormTest"})
+    public void emptyFieldsTest() {
+        paymentForm.clickExitButton();
+        DriverUtils.switchToDefaultFrame();
+        homePage.clearEmailField();
+        homePage.clearMoneyField();
+        homePage.clearPhoneField();
+        Assert.assertEquals(homePage.getMoneyFieldText(),ConfigUtils.getTestProperty(KeyUtils.MONEY_PLACEHOLDER));
+        Assert.assertEquals(homePage.getEmailFieldText(),ConfigUtils.getTestProperty(KeyUtils.EMAIL_PLACEHOLDER));
+        Assert.assertEquals(homePage.getPhoneFieldText(),ConfigUtils.getTestProperty(KeyUtils.PHONE_PLACEHOLDER));
+    }*/
 }

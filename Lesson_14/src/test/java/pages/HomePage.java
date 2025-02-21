@@ -48,4 +48,27 @@ public class HomePage extends BaseForm {
     public void checkAndAgreeCookie() {
         agreeCookieButton.clickIfExists();
     }
+
+    public void clearPhoneField(){
+        phoneNumberField.clearField();
+    }
+
+    public void clearEmailField(){
+        emailField.clearField();
+    }
+    public void clearMoneyField(){
+        moneyField.clearField();
+    }
+
+    public String getPhoneFieldText(){
+       return phoneNumberField.getAttributeValue("placeholder");
+    }
+
+    public String getMoneyFieldText(){
+        return moneyField.getAttributeValue("placeholder");
+    }
+
+    public String getEmailFieldText(){
+        return emailField.getAttributeValue("placeholder");
+    }
 }

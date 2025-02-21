@@ -33,6 +33,9 @@ public class DriverUtils {
     public static void switchToFrameByXpath(By locator) {
         WaitUtils.setWaitUntilFrameIsPresent(locator);
     }
+    public static void switchToDefaultFrame(){
+        Singleton.getDriver().switchTo().defaultContent();
+    }
 
     public static void openURL(String url) {
         Singleton.getDriver().get(url);
