@@ -41,4 +41,8 @@ public class BaseElement {
     public WebElement waitElementIsDisplayed() {
         return WaitUtils.setWaitUntilVisibility(locator);
     }
+
+    public String getElementText() {
+        return findElement().getText();
+    }
 }
