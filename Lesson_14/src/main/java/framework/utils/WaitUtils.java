@@ -24,8 +24,11 @@ public class WaitUtils {
         wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(locator));
     }
 
-    public static WebElement setWaitUntilElementIsPresent(By locator){
-        return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+    public static void setWaitUntilElementIsPresent(By locator) {
+        wait.until(ExpectedConditions.presenceOfElementLocated(locator));
     }
 
+    public static void setWaitUntilElementIsClickable(WebElement element) {
+        wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
 }

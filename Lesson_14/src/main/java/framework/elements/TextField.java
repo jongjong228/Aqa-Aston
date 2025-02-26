@@ -12,7 +12,7 @@ public class TextField extends BaseElement {
         findElement().sendKeys(str);
     }
 
-    public void clearField(){
+    public void clearField() {
         findElement().clear();
     }
 }

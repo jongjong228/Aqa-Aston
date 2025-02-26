@@ -6,6 +6,8 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
 
+import java.util.List;
+
 public class DriverUtils {
 
     public DriverUtils() {
@@ -33,11 +35,16 @@ public class DriverUtils {
     public static void switchToFrameByXpath(By locator) {
         WaitUtils.setWaitUntilFrameIsPresent(locator);
     }
-    public static void switchToDefaultFrame(){
+
+    public static void switchToDefaultFrame() {
         Singleton.getDriver().switchTo().defaultContent();
     }
 
     public static void openURL(String url) {
         Singleton.getDriver().get(url);
+    }
+
+    public static List<WebElement> findElements(By locator) {
+        return Singleton.getDriver().findElements(locator);
     }
 }
