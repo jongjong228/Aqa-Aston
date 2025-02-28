@@ -4,6 +4,8 @@ import framework.tests.BaseTest;
 import framework.utils.ConfigUtils;
 import framework.utils.DriverUtils;
 import framework.utils.StringUtils;
+import io.qameta.allure.Description;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -19,6 +21,8 @@ public class OnlineReplenishmentTest extends BaseTest {
     private HomePage homePage;
     private PaymentForm paymentForm;
 
+    @Step
+    @Description(value = "Проверка открытия главной страницы веб-приложения")
     @Test
     public void nameOfBlockTest() {
         DriverUtils.openURL(ConfigUtils.getConfProperty(KeyUtils.BASE_URL));
@@ -26,12 +30,14 @@ public class OnlineReplenishmentTest extends BaseTest {
         homePage.checkAndAgreeCookie();
         Assert.assertTrue(homePage.isPageOpened());
     }
-
+    @Step
+    @Description(value = "Проверка присутсвия логотипов платежных систем")
     @Test(dependsOnMethods = {"nameOfBlockTest"})
     public void logosPresenceTest() {
         Assert.assertEquals(homePage.getNumOfLogos(), Integer.parseInt(ConfigUtils.getConfProperty(KeyUtils.NUM_OF_LOGOS)));
     }
-
+    @Step
+    @Description(value = "Проверка открытия веб-страницы по нажатию на ссылку")
     @Test(dependsOnMethods = {"logosPresenceTest"})
     public void aboutServiceLinkTest() {
         homePage.clickAboutServiceLink();
@@ -39,7 +45,8 @@ public class OnlineReplenishmentTest extends BaseTest {
         aboutServicePage.checkAndAgreeCookie();
         Assert.assertTrue(aboutServicePage.isPageOpened());
     }
-
+    @Step
+    @Description(value = "Проверка открытия формы ввода данных банковской карты")
     @Test(dependsOnMethods = {"aboutServiceLinkTest"})
     public void sendFormTest() {
         DriverUtils.getToPreviousPage();
@@ -52,7 +59,8 @@ public class OnlineReplenishmentTest extends BaseTest {
         DriverUtils.switchToFrameByXpath(By.xpath("//iframe[@class='bepaid-iframe']"));
         Assert.assertTrue(paymentForm.isFrameOpened());
     }
-
+    @Step
+    @Description(value = "Проверка плейсхолдеров формы оплаты связи")
     @Test(dependsOnMethods = {"checkPaymentFormFieldsTest"})
     public void emptyFieldsTest() {
         paymentForm.clickExitButton();
@@ -76,7 +84,8 @@ public class OnlineReplenishmentTest extends BaseTest {
         Assert.assertEquals(homePage.getEmailArrearsFieldText(), ConfigUtils.getTestProperty(KeyUtils.EMAIL_PLACEHOLDER));
         Assert.assertEquals(homePage.getPhoneArrearsFieldText(), ConfigUtils.getTestProperty(KeyUtils.PHONE_ARREARS_PLACEHOLDER));
     }
-
+    @Step
+    @Description(value = "Проверка информации на странице ввода данных банковской карты")
     @Test(dependsOnMethods = {"sendFormTest"})
     public void checkPaymentFormFieldsTest() {
         String coast = StringUtils.createCoast(ConfigUtils.getTestProperty(KeyUtils.MONEY_KEY));
