@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="factorial">
+    <test name="factorial test">
+        <parameter name="positiveFactorialNumber" value="4"/>
+        <parameter name="positiveResult" value="24"/>
+        <parameter name="positiveZeroTest" value="0"/>
+        <parameter name="positiveZeroResult" value="1"/>
+        <parameter name="stringValue" value="aaa"/>
+        <parameter name="negativeFactorialNumber" value="-2"/>
+        <parameter name="negativeLongNumber" value="21474836480"/>
+        <classes>
+            <class name="tests.TestFactorialFunction"/>
+        </classes>
+    </test>
+</suite>
